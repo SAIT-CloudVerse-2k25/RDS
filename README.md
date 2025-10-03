@@ -12,7 +12,7 @@
 2. Choose:
 
    - **Standard Create**
-   - **Engine**: MySQL
+   - **Engine**: MySQLfor 
    - **Version**: Latest supported
    - **DB Instance Class**: db.t3.micro (Free Tier)
    - **Storage**: General Purpose SSD (gp2)
@@ -40,39 +40,39 @@
    ```bash
    mysql -h <RDS-endpoint> -P 3306 -u admin -p
 
-    Enter your password.
-
-    You should see:
+ Enter your password.
+ You should see:
 
     Welcome to the MariaDB monitor...
     MySQL [(none)]>
 
-4. SQL Operations
+## 4. SQL Operations
 
-    Step 1: Create Database
-
-CREATE DATABASE students;
-
-Step 2: Use Database
-
-USE students;
-
+### Step 1: Create Database
+```sql
+CREATE DATABASE college;
+```
+### Step 2: Use Database**
+```sql
+USE college;
+```
 Step 3: Create Table
-
-CREATE TABLE users (
+```sql
+CREATE TABLE students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50),
-  roll_no INT
+  prn INT
 );
-
+```
 Step 4: Insert Records
-
-INSERT INTO users (name, roll_no) VALUES ('Vaishnavi', 48), ('Radhika', 55);
-
+```sql
+INSERT INTO students (name, roll_no) VALUES ('Vaishnavi', 48), ('Radhika', 55);
+```
 Step 5: Retrieve Records
-
-    SELECT * FROM users;
-
-5. Exit MySQL
-
-exit
+```sql
+SELECT * FROM students;
+```
+Exit MySQL Session
+```sql
+exit;
+```
