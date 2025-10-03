@@ -1,0 +1,102 @@
+# **AWS RDS Hands-On Guide** 
+
+### **1. Prepare Your Environment**
+
+-   **Platform**: AWS Console + AWS CloudShell
+
+-   **Tools Needed**: MySQL client
+
+### **2. Create RDS Database Instance**
+
+1.  Go to **RDS → Databases → Create Database\
+    > **
+
+2.  Choose:
+
+    -   **Standard Create\
+        > **
+
+    -   **Engine**: MySQL
+
+    -   **Version**: Latest supported
+
+    -   **DB Instance Class**: db.t3.micro (Free Tier)
+
+    -   **Storage**: General Purpose SSD (gp2)
+
+    -   **VPC**: Select **Default VPC\
+        > **
+
+    -   **DB Subnet Group**: Default
+
+    -   **Publicly Accessible**: **Yes\
+        > **
+
+    -   **Connectivity** → **VPC Security Group**:
+
+        -   Click **Create New Security Group\
+            > **
+
+        -   Name: mydb-sg
+
+        -   Rule: Add **MySQL/Aurora (3306)** inbound
+
+        -   Source: **Anywhere (0.0.0.0/0)**
+
+    -   **Master Username**: admin
+
+    -   **Password**: (choose strong password)
+
+3.  Click **Create Database\
+    > **
+
+4.  Wait until status = **Available\
+    > **
+
+### **3. Connect from CloudShell**
+
+1.  Copy the **RDS Endpoint** from **Connectivity tab**.
+
+2.  In **CloudShell**, run: **mysql -h \<RDS-endpoint\> -P 3306 -u admin
+    > -p**
+
+3\. Enter your password.
+
+4\. You should see:
+
+**Welcome to the MariaDB monitor\...**
+
+**MySQL \[(none)\]\>**
+
+**Step 1:** Create Database
+
+CREATE DATABASE students;
+
+> **Step 2:** Use Database
+>
+> USE students;
+>
+> **Step 3:** Create Table
+>
+> CREATE TABLE users (
+>
+> id INT AUTO_INCREMENT PRIMARY KEY,
+>
+> name VARCHAR(50),
+>
+> roll_no INT
+>
+> );
+>
+> **Step 4:** Insert Records
+>
+> INSERT INTO users (name, roll_no) VALUES (\'Vaishnavi\', 48),
+> (\'Radhika\', 55);
+>
+> **Step 5:** Retrieve Records
+>
+> SELECT \* FROM users;
+
+**Exit the MySQL Session** Run:
+
+exit;
